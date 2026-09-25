@@ -1,0 +1,19 @@
+ACME CORP - EMPLOYEE LEAVE & ATTENDANCE POLICY (2026)
+
+1. Annual Paid Leave
+Employees are entitled to 24 days of paid annual leave per calendar year. Leave accrues at the rate of 2 days per completed month of service. Employees may carry forward a maximum of 10 unused leave days into the next calendar year.
+
+2. Sick & Medical Leave
+All full-time staff receive 12 days of paid medical leave annually. For absences extending beyond 3 consecutive days, a signed medical certificate from a licensed physician must be submitted to HR within 48 hours of return.
+
+3. Parental & Maternity Leave
+Eligible female employees are granted 26 weeks of fully paid maternity leave. Primary caregivers are entitled to 12 weeks of paid paternity leave, which must be availed within 12 months of the child's birth or adoption.
+
+4. Public Holidays & Floating Holidays
+Acme Corp observes 10 standard national holidays each year. In addition, employees receive 2 floating holidays to observe cultural, religious, or personal events of their choice.
+
+5. Remote Work & Flexible Hours
+Core collaboration hours are 10:00 AM to 4:00 PM. Employees may work remotely up to 3 days per week with manager approval. Core team meetings require video participation.
+
+6. Leave Application Procedure
+All leave requests exceeding 2 days must be requested through the Acme HR Portal at least 5 business days in advance. Emergency leave should be notified via Slack and formal application filed upon return.

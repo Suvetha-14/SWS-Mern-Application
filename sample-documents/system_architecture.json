@@ -1,0 +1,35 @@
+{
+  "system": "DocuMind Enterprise Cloud",
+  "version": "2.4.0",
+  "environment": "production",
+  "database": {
+    "primary": "MongoDB 8.0",
+    "cluster": "ReplicaSet",
+    "collection": "documents",
+    "indexing": ["createdAt", "originalName", "extractedText"]
+  },
+  "backend": {
+    "runtime": "Node.js 22 LTS",
+    "framework": "Express 4",
+    "port": 5000,
+    "apiPrefix": "/api",
+    "documentation": "/api-docs",
+    "storage": {
+      "type": "LocalDisk",
+      "path": "./uploads",
+      "maxFileSizeMB": 10
+    }
+  },
+  "frontend": {
+    "framework": "React 18",
+    "bundler": "Vite",
+    "styling": "Tailwind CSS",
+    "port": 5173
+  },
+  "aiEngine": {
+    "retrieval": "BM25 / Keyword Overlap Ranking",
+    "topKDocuments": 3,
+    "fallbackEnabled": true,
+    "supportedProviders": ["Gemini", "OpenAI", "LocalSynthesizer"]
+  }
+}
