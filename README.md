@@ -31,8 +31,8 @@ A full-stack enterprise document management platform with an AI-powered conversa
 - **Source Attribution**: Answers cite the exact source documents (`_id`, `originalName`) used to formulate the response.
 - **Interactive Citations**: Click any source citation chip in the chat to open an instant document content preview modal.
 
-### 🎨 3. Modern, Sleek UI Dashboard
-- **Glassmorphism Theme**: High-contrast, dark-mode SaaS design built with Tailwind CSS.
+### 🎨 3. Modern Pink & White UI Dashboard
+- **Pink & White Theme**: Elegant, modern pink and white aesthetic with delicate rose accents, crisp white cards, and high-contrast typography.
 - **Live System Metrics**: Real-time counter of total documents, indexed words, and storage footprint.
 - **Drag-and-Drop Uploader**: Live file drop zone with validation preview and upload progress indicators.
 - **Interactive Chatbot**: Clean conversational UI with suggested prompt starters, copy-to-clipboard, and typing animations.
