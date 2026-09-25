@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { UploadCloud, FileText, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { documentAPI } from '../services/api';
 
-const ALLOWED_EXTS = ['.txt', '.md', '.json'];
+const ALLOWED_EXTS = ['.txt', '.md', '.json', '.docx', '.pdf'];
 
 export default function DocumentUpload({ onUploadSuccess, showToast }) {
   const [isDragging, setIsDragging] = useState(false);
@@ -109,7 +109,9 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
             Supported formats:{' '}
             <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.txt</span>,{' '}
             <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.md</span>,{' '}
-            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.json</span>{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.json</span>,{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.docx</span>,{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.pdf</span>{' '}
             (Max 10MB)
           </p>
         </div>
@@ -132,7 +134,7 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".txt,.md,.json,text/plain,text/markdown,application/json"
+          accept=".txt,.md,.json,.docx,.pdf,text/plain,text/markdown,application/json,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={handleFileChange}
           className="hidden"
           disabled={isUploading}

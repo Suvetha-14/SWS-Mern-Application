@@ -22,8 +22,8 @@ const storage = multer.diskStorage({
   },
 });
 
-// Allowed file extensions
-const ALLOWED_EXTENSIONS = ['.txt', '.md', '.json'];
+// Allowed file extensions (.txt, .md, .json, .docx, .pdf)
+const ALLOWED_EXTENSIONS = ['.txt', '.md', '.json', '.docx', '.pdf'];
 
 // File filter
 const fileFilter = (req, file, cb) => {

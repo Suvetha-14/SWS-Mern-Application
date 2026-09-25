@@ -67,6 +67,18 @@ export default function DocumentList({
             <FileCode className="w-3 h-3" /> MD
           </span>
         );
+      case '.docx':
+        return (
+          <span className="px-2 py-0.5 rounded-lg text-[11px] font-mono bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1">
+            <FileText className="w-3 h-3" /> DOCX
+          </span>
+        );
+      case '.pdf':
+        return (
+          <span className="px-2 py-0.5 rounded-lg text-[11px] font-mono bg-purple-50 text-purple-700 border border-purple-200 flex items-center gap-1">
+            <FileText className="w-3 h-3" /> PDF
+          </span>
+        );
       case '.txt':
       default:
         return (
@@ -127,13 +139,13 @@ export default function DocumentList({
         </div>
 
         {/* Filter Chips */}
-        <div className="flex items-center gap-1 bg-pink-50/60 p-1 rounded-xl border border-pink-100 self-start sm:self-auto">
-          {['all', '.txt', '.md', '.json'].map((ext) => (
+        <div className="flex items-center gap-1 bg-pink-50/60 p-1 rounded-xl border border-pink-100 self-start sm:self-auto overflow-x-auto max-w-full">
+          {['all', '.txt', '.md', '.json', '.docx', '.pdf'].map((ext) => (
             <button
               key={ext}
               type="button"
               onClick={() => setSelectedExtension(ext)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedExtension === ext
                   ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-sm'
                   : 'text-slate-600 hover:text-pink-600 hover:bg-white'

@@ -41,7 +41,7 @@ export default function StatsOverview({ documents = [] }) {
     },
     {
       label: 'Supported Formats',
-      value: '.TXT, .MD, .JSON',
+      value: '.TXT, .MD, .JSON, .DOCX, .PDF',
       icon: Cpu,
       color: 'text-pink-700',
       bg: 'bg-pink-100/60',
