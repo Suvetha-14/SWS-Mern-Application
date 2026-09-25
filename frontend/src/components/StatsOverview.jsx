@@ -19,33 +19,33 @@ export default function StatsOverview({ documents = [] }) {
       label: 'Total Documents',
       value: totalDocs,
       icon: Files,
-      color: 'text-indigo-400',
-      bg: 'bg-indigo-500/10',
-      border: 'border-indigo-500/20',
+      color: 'text-pink-600',
+      bg: 'bg-pink-50',
+      border: 'border-pink-200/60',
     },
     {
       label: 'Indexed Words',
       value: totalWords.toLocaleString(),
       icon: FileType,
-      color: 'text-sky-400',
-      bg: 'bg-sky-500/10',
-      border: 'border-sky-500/20',
+      color: 'text-rose-600',
+      bg: 'bg-rose-50',
+      border: 'border-rose-200/60',
     },
     {
       label: 'Total Storage',
       value: formatSize(totalBytes),
       icon: Database,
-      color: 'text-emerald-400',
-      bg: 'bg-emerald-500/10',
-      border: 'border-emerald-500/20',
+      color: 'text-fuchsia-600',
+      bg: 'bg-fuchsia-50',
+      border: 'border-fuchsia-200/60',
     },
     {
       label: 'Supported Formats',
       value: '.TXT, .MD, .JSON',
       icon: Cpu,
-      color: 'text-violet-400',
-      bg: 'bg-violet-500/10',
-      border: 'border-violet-500/20',
+      color: 'text-pink-700',
+      bg: 'bg-pink-100/60',
+      border: 'border-pink-200',
     },
   ];
 
@@ -56,15 +56,15 @@ export default function StatsOverview({ documents = [] }) {
         return (
           <div
             key={index}
-            className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-sm hover:border-slate-700 transition-all"
+            className="p-4 rounded-2xl bg-white border border-pink-100/90 shadow-sm shadow-pink-100/40 hover:shadow-md hover:border-pink-200 transition-all"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-slate-400">{item.label}</span>
-              <div className={`p-2 rounded-lg ${item.bg} border ${item.border}`}>
+              <span className="text-xs font-semibold text-slate-500">{item.label}</span>
+              <div className={`p-2 rounded-xl ${item.bg} border ${item.border}`}>
                 <Icon className={`w-4 h-4 ${item.color}`} />
               </div>
             </div>
-            <div className="text-xl font-semibold text-white tracking-tight">
+            <div className="text-xl font-bold text-slate-800 tracking-tight">
               {item.value}
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileText, CheckCircle2, AlertCircle, Loader2, X } from 'lucide-react';
+import { UploadCloud, FileText, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { documentAPI } from '../services/api';
 
 const ALLOWED_EXTS = ['.txt', '.md', '.json'];
@@ -98,17 +98,19 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
   };
 
   return (
-    <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md mb-6">
+    <div className="p-5 rounded-2xl bg-white border border-pink-100 shadow-sm shadow-pink-100/40 mb-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-base font-semibold text-white flex items-center gap-2">
-            <UploadCloud className="w-5 h-5 text-indigo-400" />
+          <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
+            <UploadCloud className="w-5 h-5 text-pink-500" />
             Upload Document
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Supported formats: <span className="font-mono text-slate-300">.txt</span>,{' '}
-            <span className="font-mono text-slate-300">.md</span>,{' '}
-            <span className="font-mono text-slate-300">.json</span> (Max 10MB)
+          <p className="text-xs text-slate-500 mt-0.5">
+            Supported formats:{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.txt</span>,{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.md</span>,{' '}
+            <span className="font-mono font-medium text-pink-600 bg-pink-50 px-1 py-0.5 rounded">.json</span>{' '}
+            (Max 10MB)
           </p>
         </div>
       </div>
@@ -119,12 +121,12 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !isUploading && fileInputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
+        className={`relative border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-all ${
           isDragging
-            ? 'border-indigo-500 bg-indigo-500/10'
+            ? 'border-pink-500 bg-pink-100/50 scale-[0.99]'
             : selectedFile
-            ? 'border-emerald-500/40 bg-emerald-500/5'
-            : 'border-slate-700/80 hover:border-slate-600 bg-slate-950/40 hover:bg-slate-900/40'
+            ? 'border-rose-400 bg-rose-50/50'
+            : 'border-pink-200 hover:border-pink-400 bg-pink-50/20 hover:bg-pink-50/50'
         }`}
       >
         <input
@@ -138,25 +140,26 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
 
         {selectedFile ? (
           <div className="flex flex-col items-center">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-3">
-              <FileText className="w-6 h-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-2xl bg-rose-100 border border-rose-200 flex items-center justify-center mb-3 text-rose-600 shadow-sm">
+              <FileText className="w-6 h-6" />
             </div>
-            <p className="text-sm font-medium text-white mb-1 truncate max-w-sm">
+            <p className="text-sm font-semibold text-slate-800 mb-1 truncate max-w-sm">
               {selectedFile.name}
             </p>
-            <p className="text-xs text-slate-400 mb-3">
+            <p className="text-xs text-slate-500 mb-2">
               {(selectedFile.size / 1024).toFixed(1)} KB &bull; Ready to index
             </p>
           </div>
         ) : (
           <div className="flex flex-col items-center">
-            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-3">
-              <UploadCloud className="w-6 h-6 text-indigo-400" />
+            <div className="w-12 h-12 rounded-2xl bg-pink-100 border border-pink-200 flex items-center justify-center mb-3 text-pink-600 shadow-sm">
+              <UploadCloud className="w-6 h-6" />
             </div>
-            <p className="text-sm font-medium text-slate-200 mb-1">
-              Drag & drop document here, or <span className="text-indigo-400 underline underline-offset-2">browse files</span>
+            <p className="text-sm font-semibold text-slate-700 mb-1">
+              Drag & drop document here, or{' '}
+              <span className="text-pink-600 underline underline-offset-2">browse files</span>
             </p>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Text will be extracted automatically for AI retrieval
             </p>
           </div>
@@ -165,7 +168,7 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
 
       {/* Error message */}
       {errorMessage && (
-        <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs">
+        <div className="mt-3 flex items-center gap-2 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs">
           <AlertCircle className="w-4 h-4 flex-shrink-0" />
           <span>{errorMessage}</span>
         </div>
@@ -175,9 +178,9 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
       {selectedFile && (
         <div className="mt-4 flex flex-col gap-3">
           {isUploading && (
-            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+            <div className="w-full bg-pink-100 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-indigo-500 h-full transition-all duration-300"
+                className="bg-gradient-to-r from-pink-500 to-rose-500 h-full transition-all duration-300"
                 style={{ width: `${uploadProgress}%` }}
               />
             </div>
@@ -188,7 +191,7 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
               type="button"
               onClick={clearSelection}
               disabled={isUploading}
-              className="px-3 py-1.5 rounded-lg border border-slate-700 hover:bg-slate-800 text-xs text-slate-300 transition-colors disabled:opacity-50"
+              className="px-3.5 py-1.5 rounded-xl border border-pink-200 hover:bg-pink-50 text-xs font-medium text-slate-600 transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
@@ -196,7 +199,7 @@ export default function DocumentUpload({ onUploadSuccess, showToast }) {
               type="button"
               onClick={handleUpload}
               disabled={isUploading}
-              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-medium text-white shadow-lg shadow-indigo-600/30 transition-all disabled:opacity-50"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-xs font-semibold text-white shadow-md shadow-pink-500/25 transition-all disabled:opacity-50"
             >
               {isUploading ? (
                 <>

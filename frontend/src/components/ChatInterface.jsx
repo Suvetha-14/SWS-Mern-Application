@@ -133,20 +133,20 @@ export default function ChatInterface({
   };
 
   return (
-    <div className="flex flex-col h-[740px] rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md overflow-hidden">
+    <div className="flex flex-col h-[740px] rounded-2xl bg-white border border-pink-100 shadow-sm shadow-pink-100/40 overflow-hidden">
       {/* Chat Header */}
-      <div className="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
+      <div className="px-5 py-4 border-b border-pink-100 flex items-center justify-between bg-pink-50/30">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center shadow-md shadow-indigo-500/20">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-500 via-rose-500 to-fuchsia-400 flex items-center justify-center shadow-md shadow-pink-500/25">
             <Bot className="w-4 h-4 text-white" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+            <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
               AI Document Assistant
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
             </h2>
-            <p className="text-[11px] text-slate-400">
-              Retrieval Augmented QA &bull; Powered by document embeddings & text search
+            <p className="text-[11px] text-slate-500">
+              Retrieval Augmented QA &bull; Powered by document text search & synthesis
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function ChatInterface({
         <button
           type="button"
           onClick={clearChat}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs text-slate-400 hover:text-white transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-pink-50 border border-pink-200 text-xs font-medium text-slate-600 hover:text-pink-600 transition-colors shadow-sm"
           title="Clear Conversation"
         >
           <RotateCcw className="w-3.5 h-3.5" />
@@ -163,7 +163,7 @@ export default function ChatInterface({
       </div>
 
       {/* Messages Scroll Area */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 bg-gradient-to-b from-white to-pink-50/20">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -173,10 +173,10 @@ export default function ChatInterface({
           >
             {/* Avatar */}
             <div
-              className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${
+              className={`w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${
                 msg.role === 'user'
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'bg-slate-800 text-indigo-400 border border-slate-700'
+                  ? 'bg-gradient-to-tr from-pink-500 to-rose-500 text-white shadow-sm'
+                  : 'bg-pink-100 text-pink-600 border border-pink-200'
               }`}
             >
               {msg.role === 'user' ? <User className="w-4 h-4" /> : <Sparkles className="w-4 h-4" />}
@@ -186,19 +186,19 @@ export default function ChatInterface({
             <div
               className={`rounded-2xl p-4 text-xs leading-relaxed transition-all ${
                 msg.role === 'user'
-                  ? 'bg-indigo-600 text-white rounded-tr-none shadow-md shadow-indigo-600/10'
+                  ? 'bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white rounded-tr-none shadow-md shadow-pink-500/20 font-medium'
                   : msg.isError
-                  ? 'bg-rose-500/10 border border-rose-500/20 text-rose-200 rounded-tl-none'
-                  : 'bg-slate-950/70 border border-slate-800/80 text-slate-200 rounded-tl-none shadow-sm'
+                  ? 'bg-rose-50 border border-rose-200 text-rose-700 rounded-tl-none'
+                  : 'bg-white border border-pink-100 text-slate-800 rounded-tl-none shadow-sm'
               }`}
             >
               <div className="whitespace-pre-wrap">{msg.content}</div>
 
-              {/* Source citations badges if available */}
+              {/* Source citations badges */}
               {msg.sources && msg.sources.length > 0 && (
-                <div className="mt-3 pt-3 border-t border-slate-800/80">
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-400 mb-2">
-                    <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                <div className="mt-3 pt-3 border-t border-pink-100">
+                  <div className="flex items-center gap-1 text-[11px] font-bold text-pink-700 mb-2">
+                    <FileText className="w-3.5 h-3.5 text-pink-500" />
                     <span>Cited Sources ({msg.sources.length}):</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -207,10 +207,10 @@ export default function ChatInterface({
                         key={idx}
                         type="button"
                         onClick={() => onSelectDocument && onSelectDocument(source._id)}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-[11px] text-indigo-300 hover:text-white transition-all group"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-pink-50 hover:bg-pink-100 border border-pink-200 text-[11px] font-medium text-pink-700 hover:text-pink-800 transition-all shadow-sm group"
                         title="Click to view document content"
                       >
-                        <FileText className="w-3 h-3 text-indigo-400" />
+                        <FileText className="w-3 h-3 text-pink-500" />
                         <span className="font-mono truncate max-w-[150px]">{source.originalName}</span>
                         <ExternalLink className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
                       </button>
@@ -225,11 +225,11 @@ export default function ChatInterface({
                   <button
                     type="button"
                     onClick={() => handleCopy(msg.content, msg.id)}
-                    className="p-1 text-slate-500 hover:text-slate-300 transition-colors"
+                    className="p-1 text-slate-400 hover:text-pink-600 transition-colors"
                     title="Copy Answer"
                   >
                     {copiedId === msg.id ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
                     ) : (
                       <Copy className="w-3.5 h-3.5" />
                     )}
@@ -243,11 +243,11 @@ export default function ChatInterface({
         {/* Thinking indicator */}
         {isAsking && (
           <div className="flex gap-3 max-w-[85%] mr-auto items-center">
-            <div className="w-7 h-7 rounded-lg bg-slate-800 text-indigo-400 border border-slate-700 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-xl bg-pink-100 text-pink-600 border border-pink-200 flex items-center justify-center">
               <Sparkles className="w-4 h-4 animate-pulse" />
             </div>
-            <div className="rounded-2xl rounded-tl-none p-3 bg-slate-950/70 border border-slate-800 flex items-center gap-2 text-xs text-slate-400">
-              <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-400" />
+            <div className="rounded-2xl rounded-tl-none p-3.5 bg-white border border-pink-100 shadow-sm flex items-center gap-2 text-xs text-slate-500">
+              <Loader2 className="w-3.5 h-3.5 animate-spin text-pink-500" />
               <span>Searching documents and generating response...</span>
             </div>
           </div>
@@ -258,9 +258,9 @@ export default function ChatInterface({
 
       {/* Suggested Questions Pills */}
       {messages.length <= 3 && (
-        <div className="px-4 py-2 border-t border-slate-800/60 bg-slate-950/30">
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mb-1.5">
-            <HelpCircle className="w-3 h-3 text-indigo-400" />
+        <div className="px-4 py-2.5 border-t border-pink-100 bg-pink-50/40">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-pink-700 mb-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-pink-500" />
             <span>Suggested Questions:</span>
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -270,7 +270,7 @@ export default function ChatInterface({
                 type="button"
                 onClick={() => handleSend(sug)}
                 disabled={isAsking}
-                className="text-[11px] text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 px-2.5 py-1 rounded-lg text-left transition-colors truncate max-w-full disabled:opacity-50"
+                className="text-[11px] font-medium text-slate-700 hover:text-pink-700 bg-white hover:bg-pink-100 border border-pink-200 px-3 py-1 rounded-xl text-left transition-colors truncate max-w-full shadow-sm disabled:opacity-50"
               >
                 &ldquo;{sug}&rdquo;
               </button>
@@ -280,7 +280,7 @@ export default function ChatInterface({
       )}
 
       {/* Input Area */}
-      <div className="p-4 border-t border-slate-800 bg-slate-950/60">
+      <div className="p-4 border-t border-pink-100 bg-white">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -296,12 +296,12 @@ export default function ChatInterface({
             onKeyDown={handleKeyDown}
             placeholder="Ask a question about your uploaded documents... (e.g., leave days, system specs)"
             disabled={isAsking}
-            className="w-full pl-4 pr-12 py-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
+            className="w-full pl-4 pr-12 py-3 rounded-xl bg-pink-50/30 border border-pink-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:bg-white transition-all disabled:opacity-50"
           />
           <button
             type="submit"
             disabled={isAsking || !inputQuestion.trim()}
-            className="absolute right-2 p-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white disabled:opacity-40 disabled:hover:bg-indigo-600 transition-all shadow-md shadow-indigo-600/30"
+            className="absolute right-2 p-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white disabled:opacity-40 transition-all shadow-md shadow-pink-500/25"
             title="Send Question"
           >
             {isAsking ? (
@@ -311,7 +311,7 @@ export default function ChatInterface({
             )}
           </button>
         </form>
-        <p className="text-[10px] text-slate-500 mt-2 text-center">
+        <p className="text-[10px] text-slate-400 mt-2 text-center">
           Answers are synthesized from your uploaded documents with cited source documents.
         </p>
       </div>

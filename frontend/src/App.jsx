@@ -57,7 +57,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-50/50 via-white to-rose-50/40 text-slate-800">
       {/* Top Navbar */}
       <Navbar isConnected={isConnected} stats={{ count: documents.length }} />
 
@@ -114,10 +114,9 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/60 py-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-pink-100 bg-white/70 py-4 text-center text-xs text-slate-500">
         <p>
-          DocuMind &bull; Full-Stack MERN Document Management & AI Assistant Platform &bull; OpenAPI 3.0
-          Enabled
+          DocuMind &bull; Full-Stack MERN Document Management & AI Assistant Platform &bull; OpenAPI 3.0 Enabled
         </p>
       </footer>
     </div>
